@@ -8,13 +8,3 @@ venv/
 htmlcov/
 .DS_Store
 *.log
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.env
-.pytest_cache/
-.coverage
-htmlcov/
-.DS_Store
-*.log

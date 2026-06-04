@@ -1,0 +1,167 @@
+{
+  "info": {
+    "name": "API Agregação Climática e Geográfica",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Coleção Postman para testar a API de dados climáticos e geográficos de cidades brasileiras.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health - Status Operacional",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "health"]
+            },
+            "description": "Verifica se a API está operacional."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Clima",
+      "item": [
+        {
+          "name": "Clima - Fortaleza (válido)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/clima/Fortaleza",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "clima", "Fortaleza"]
+            },
+            "description": "Busca dados climáticos de Fortaleza-CE."
+          },
+          "response": []
+        },
+        {
+          "name": "Clima - São Paulo (válido)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/clima/São Paulo",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "clima", "São Paulo"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clima - Cidade Inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/clima/CidadeXYZ999",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "clima", "CidadeXYZ999"]
+            },
+            "description": "Deve retornar HTTP 404 com CIDADE_NAO_ENCONTRADA."
+          },
+          "response": []
+        },
+        {
+          "name": "Clima - Nome Inválido (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/clima/X",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "clima", "X"]
+            },
+            "description": "Deve retornar HTTP 400 com NOME_INVALIDO."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cidades por Estado",
+      "item": [
+        {
+          "name": "Cidades - CE (válido)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/cidades/CE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "cidades", "CE"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cidades - CE com limite=5",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/cidades/CE?limite=5",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "cidades", "CE"],
+              "query": [{ "key": "limite", "value": "5" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cidades - UF Inválida (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/cidades/ceara",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "cidades", "ceara"]
+            },
+            "description": "Deve retornar HTTP 400 com SIGLA_UF_INVALIDA."
+          },
+          "response": []
+        },
+        {
+          "name": "Cidades - UF Inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/cidades/XX",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "cidades", "XX"]
+            },
+            "description": "Deve retornar HTTP 404 com UF_NAO_ENCONTRADA."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
